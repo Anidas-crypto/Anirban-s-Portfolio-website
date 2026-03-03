@@ -1,0 +1,322 @@
+/*start my code from here*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: #0a1f3e;
+    color: white;
+
+}
+.para{
+    font-size: 16px;
+    font-family:sans-serif;
+}
+
+header{
+    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background-color: #0a1f3e;
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 3rem;
+    color: #d4af37;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.logo:hover{
+    transform: scale(1.1);
+}
+
+nav a{
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active{
+    color: #d4af37;
+    border-bottom: 3px solid #d4af37;
+}
+
+@media(max-width:995px){
+    nav{
+        position: absolute;
+
+        top: 100%;
+        right: 0;
+        width: 40%;
+        border-left: 3px solid #d4af37;
+        border-bottom: 3px solid#d4af37;
+        border-bottom-left-radius: 2rem;
+        padding: 1rem solid;
+        background-color: #161616;
+        border-top: 0.1rem solid rgba(0,0,0,0,1);
+
+    }
+    nav.active{
+        display: block;
+    }
+    nav a{
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+    }
+    nav a:hover,
+    nav a.active{
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border-bottom: 0.5rem solid #d4af37;
+    }
+}
+/*hide checkbox but it code by ai*/
+#menu-toggle{
+    display: none;
+}
+.menu-btn{
+    display: none;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+}
+
+@media(max-width:995px){
+
+    .menu-btn{
+        display: block;
+        font-size: 3rem;
+        cursor: pointer;
+        z-index: 101;
+    }
+
+    nav{
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 60%;
+        background-color: #161616;
+        border-left: 3px solid #d4af37;
+        border-bottom: 3px solid #d4af37;
+        border-bottom-left-radius: 2rem;
+        padding: 2rem;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.4s ease, opacity 0.3s ease;
+    }
+
+    nav a{
+        display: block;
+        margin: 2rem 0;
+        font-size: 2rem;
+    }
+
+    #menu-toggle:checked ~ nav{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/*here starts my code*/
+section{
+    min-height: 100vh;
+    padding: 5rem 9% 5rem;
+}
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background-color: #0a1f3e;
+    
+}
+
+.home .home-content h1{
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+span{
+    color: #d4af37;
+}
+
+.home-content h3{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.home-img{
+    border-radius: 50%;
+}
+.home-img img{
+    position: relative;
+    width: 32vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px;
+    cursor: pointer;
+}
+
+
+.social-icons a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: transparent;
+    border: 0.2rem solid #d4af37;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin: 3rem 1.5rem 3rem;
+    transition: 0.3s ease;
+    color: #d4af37;
+}
+
+
+.social-icons a:hover{
+    background-color: #d4af37;
+    color: #0a1f3e;
+    transform: scale(1.1) translateY(-5px);
+    box-shadow:0 0 25px #d4af37 ;
+}
+
+.typing-text{
+    font-size: 34px;
+    font-weight: 600;
+    /*min-width: 280px; */
+}
+
+.typing-text span{
+    position: relative;
+    color: #d4af37;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.typing-text span::before{
+    content: "Software Developer";
+    color: #d4af37;
+    animation: words 15s infinite;
+}
+
+.typing-text span::after{
+    content: "";
+    background-color: #0a1f3e;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-left: 3px solid #d4af37;
+    right: 0;
+    animation: typing 3s steps(25) infinite, blink 0.7s infinite;
+}
+@keyframes typing{
+    0%{ width: 100%; }
+    40%{ width: 0; }
+    60%{ width: 0; }
+    100%{ width: 100%; }
+}
+
+@keyframes words{
+    0%, 20%{
+        content: "CyberSecurity Learner";
+    }
+    21%, 40%{
+        content: "Software Developer ";
+    }
+    41%, 60%{
+        content: "Ethical Hacking ";
+    }
+    61%, 80%{
+        content: "Gamer ";
+    }
+    81%, 100%{
+        content: "Game Designer ";
+    }
+}
+@keyframes blink{
+    50%{ border-color: transparent; }
+}
+
+
+@media(max-width: 1000px){
+    .home{
+        gap: 4rem;
+
+    }
+}
+
+@media(max-width:995px){
+    .home{
+        flex-direction: column;
+        margin: 5rem 4rem;
+    }
+    .home-img img{
+        width: 70%;
+        max-width: 280px;
+        margin-top: 2rem;
+    }
+}
+
+.home .home-content h3{
+    font-size: 2.5rem;
+}
+
+.home-content h1{
+    font-size: 5rem;
+}
+
+.home-img img{
+    width: 70vh;
+    margin-top: 4rem;
+}
+
+
+
+
+/*
+footer{
+    background-color: #161616;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 5rem;
+    border-top: 2px solid #d4af37;
+}
+
+footer p{
+    font-size: 1.6rem;
+    color: white;
+}
+
+footer span{
+    color: #d4af37;
+    font-weight: bold;
+}
+*/
