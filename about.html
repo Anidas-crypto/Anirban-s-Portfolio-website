@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Anirban's Portfolio website</title>
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+    <header>
+        <label class="logo">About_me</label>
+
+    <!-- Menu icon -->
+    <div class="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+        <nav id="nav-menu">
+            <a href="index.html" class="Home">Home</a>
+            <a href="skills.html">Sklls</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About_Me</a>
+        </nav>
+    </header>
+
+
+
+    <section class="about-section">
+
+    <h1 class="about-title">About Me</h1>
+
+    <div class="about-container">
+
+        <!-- Education -->
+        <div class="about-box">
+            <h2>🎓 Education</h2>
+            <ul>
+                <li>Madhyamik - Janai Traning High School (2021)</li>
+                <li>Higher Secondary - Janai Traning High School (2023)</li>
+                <li>BCA - The Calcutta Anglo Gujarati College </li>
+            </ul>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="about-box">
+            <h2>💼 Work Experience</h2>
+            <p> i currently doesn't have any work experience. but i actively find some jobs. </p>
+        </div>
+
+        <!-- Personal Interest -->
+        <div class="about-box">
+            <h2>🚀 Personal Interests</h2>
+            <ul>
+                <li>Learning New Programming Languages</li>
+                <li>Cybersecurity & Ethical Hacking</li>
+                <li>Exploring New OS & Technologies</li>
+                <li>Gaming & Game Designing</li>
+                <li>News Paper/Online News Reading</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+        <h2>Contact Me</h2>
+        <form action="contact.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</section>
+
+    <!-- only javascript logic using AI -->
+    <script>
+    const menuBtn = document.querySelector(".menu-btn");
+    const nav = document.getElementById("nav-menu");
+    menuBtn.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    });
+    document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
+            nav.classList.remove("active");
+        }
+    });
+    </script>
+
+
+</body>
+</html>
