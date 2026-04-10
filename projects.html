@@ -4,92 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Anirban's Portfolio website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Projects — Anirban's Portfolio</title>
     <link rel="icon" type="image/png" href="Images/logo.png">
-    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="project.css"
 </head>
 <body>
 
-    <div class="cursor"></div>
-    <div class="cursor-ring"></div>
-    
-    <header>
-        <label class="logo">Projects</label>
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <!-- Menu icon -->
-    <div class="menu-btn">
-        <i class="fa-solid fa-bars"></i>
+<header>
+    <a href="index.html" class="logo">Anirban.</a>
+    <div class="menu-btn"><i class="fa-solid fa-bars"></i></div>
+    <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html" class="active-link">Projects</a>
+        <a href="about.html">About Me</a>
+    </nav>
+</header>
+
+<section class="projects-section">
+
+    <h1 class="projects-title">My <span>Projects</span></h1>
+    <p class="projects-subtitle">A collection of things I've worked on.</p>
+
+    <div class="project-grid">
+
+        <!-- Login Form -->
+        <div class="project-card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-right-to-bracket"></i></div>
+                <div class="card-title">Login Form</div>
+            </div>
+            <p class="card-desc">A clean, responsive login page with form validation and styled UI.</p>
+            <div class="card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+            </div>
+            <div class="card-footer">
+                <a href="projects/login/index.html" class="project-btn">
+                    View Project <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Catura AI -->
+        <div class="project-card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                <div class="card-title">Catura AI <span style="font-size:1.2rem; color:var(--muted); font-weight:400;">(Alpha)</span></div>
+            </div>
+            <p class="card-desc">An AI assistant built by Anirban, currently in alpha phase and hosted live.</p>
+            <div class="card-tags">
+                <span class="tag">AI</span>
+                <span class="tag">Python</span>
+                <span class="tag">Web</span>
+            </div>
+            <div class="card-footer">
+                <a href="https://my-ai-assistant-9bbd.onrender.com" target="_blank" class="project-btn">
+                    View Live <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
+
     </div>
-        <nav id="nav-menu">
-            <a href="index.html" class="Home">Home</a>
-            <a href="skills.html">Sklls</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About_Me</a>
-        </nav>
-    </header>
-    <section class="project-section">
-          <h1 class="project-title">My Projects</h1>
-          
-          <div class="project-container">
-            <div class="project-box">
-                <h2>Login Form</h2>
-                <ul>
-                    <li><a href="projects/login/index.html" class="project-btn">Click to View</a></li>
-                </ul>
-            </div>
-            <div class="project-box">
-                <h2>Catura AI by Anirban (Alpha Phase)</h2>
-                <ul>
-                    <li><a href="https://my-ai-assistant-9bbd.onrender.com" class="project-btn">Click to View</a></li>
-                </ul>
-            </div>
+</section>
 
-          </div>
-    </section>
-    <!-- only javascript logic using AI -->
-    <script>
+<script>
+    // ── Nav toggle ──
     const menuBtn = document.querySelector(".menu-btn");
     const nav = document.getElementById("nav-menu");
-    menuBtn.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
+    menuBtn.addEventListener("click", () => nav.classList.toggle("active"));
     document.addEventListener("click", (e) => {
-        if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
+        if (!nav.contains(e.target) && !menuBtn.contains(e.target))
             nav.classList.remove("active");
-        }
     });
-    </script>
 
-    <script>
-    const cursor = document.querySelector('.cursor');
-    const ring = document.querySelector('.cursor-ring');
-
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
-
-    // Track mouse
-    document.addEventListener('mousemove', e => {   
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    // Dot follows instantly
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
-});
-
-    // Smooth ring animation
-    function animateRing() {
-        ringX += (mouseX - ringX) * 0.12;
-        ringY += (mouseY - ringY) * 0.12;
-
-        ring.style.left = ringX + 'px';
-        ring.style.top = ringY + 'px';
-
-        requestAnimationFrame(animateRing);
+    // ── Custom cursor: dot snaps, ring follows ──
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top  = my + 'px';
+    });
+    function followRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + 'px';
+        ring.style.top  = ry + 'px';
+        requestAnimationFrame(followRing);
     }
+    followRing();
+</script>
 
-    animateRing();
-    </script>
-    
 </body>
 </html>

@@ -4,83 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Anirban's Portfolio website</title>
-    <link rel="stylesheet" href="skills.css"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Skills — Anirban's Portfolio Website</title>
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <link rel="stylesheet" href="skills.css">
 </head>
 <body>
-    <header>
-        <label class="logo">Skills</label>
-    <!-- Menu icon -->
-    <div class="menu-btn">
-        <i class="fa-solid fa-bars"></i>
-    </div>
-        <nav id="nav-menu">
-            <a href="index.html" class="Home">Home</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About_Me</a>
-        </nav>
-    </header>
 
-    <section class="skill-section">
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <h1 class="skill-title">My Skills</h1>
+<header>
+    <a href="index.html" class="logo">Anirban.</a>
+    <div class="menu-btn"><i class="fa-solid fa-bars"></i></div>
+    <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="skills.html" class="active-link">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About Me</a>
+    </nav>
+</header>
 
-    <div class="skill-container">
+<section class="skills-section">
 
-        <!-- Education -->
-        <div class="skill-box">
-            <h2><i class="fa-solid fa-code"></i> Technical Skills</h2>
-            <ul>
-                <li>Programming: C, C++, Python, Java</li>
-                <li>Web: HTML, CSS, JAVASCRIPT</li>
-                <li>Database: MySQL</li>
+    <h1 class="skills-title">My <span>Skills</span></h1>
+
+    <div class="skill-grid">
+
+        <!-- Technical Skills -->
+        <div class="skill-card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-code"></i></div>
+                <div class="card-title">Technical Skills</div>
+            </div>
+            <ul class="skill-list">
+                <li>C &amp; C++</li>
+                <li>Python</li>
+                <li>Java</li>
+                <li>HTML, CSS, JavaScript</li>
+                <li>MySQL</li>
             </ul>
         </div>
-        <div class="skill-box">
-            <h2><i class="fa-solid fa-user-secret"></i>Cybersecurity Skills</h2>
-            <ul>
+
+        <!-- Cybersecurity -->
+        <div class="skill-card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-user-secret"></i></div>
+                <div class="card-title">Cybersecurity</div>
+            </div>
+            <ul class="skill-list">
                 <li>Networking Fundamentals</li>
-                <li>Linux command line</li>
-                <li>wireshark</li>
+                <li>Linux Command Line</li>
+                <li>Wireshark</li>
                 <li>John the Ripper</li>
-                <li>HashCat</li>
+                <li>Hashcat</li>
             </ul>
         </div>
 
-        <div class="skill-box">
-            <h2><i class="fas fa-tools"></i> Tools & Platforms</h2>
-            <ul>
-                <li>Git & Github</li>
+        <!-- Tools & Platforms -->
+        <div class="skill-card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                <div class="card-title">Tools &amp; Platforms</div>
+            </div>
+            <ul class="skill-list">
+                <li>Git &amp; GitHub</li>
                 <li>Kali Linux</li>
-                <li>Virtual Box</li>
+                <li>VirtualBox</li>
             </ul>
         </div>
 
-        <div class="skill-box">
-            <h2><i class="fa-solid fa-chart-line"></i> Level</h2>
-            <ul>
-                <li>Python - Intermediate</li>
-                <li>Linux - Intermediate</li>
-                <li>Web Development - Beginner</li>
-            </ul>
+        <!-- Skill Levels -->
+        <div class="skill-card" id="levelCard">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="card-title">Proficiency</div>
+            </div>
+
+            <div class="level-item">
+                <div class="level-label">Python <span>Intermediate</span></div>
+                <div class="level-bar"><div class="level-fill" data-width="65%"></div></div>
+            </div>
+            <div class="level-item">
+                <div class="level-label">Linux <span>Intermediate</span></div>
+                <div class="level-bar"><div class="level-fill" data-width="60%"></div></div>
+            </div>
+            <div class="level-item">
+                <div class="level-label">Web Development <span>Beginner</span></div>
+                <div class="level-bar"><div class="level-fill" data-width="35%"></div></div>
+            </div>
+            <div class="level-item">
+                <div class="level-label">C / C++ <span>Intermediate</span></div>
+                <div class="level-bar"><div class="level-fill" data-width="55%"></div></div>
+            </div>
         </div>
 
     </div>
 </section>
-<!-- only javascript logic using AI -->
-    <script>
+
+<script>
+    // ── Nav toggle ──
     const menuBtn = document.querySelector(".menu-btn");
     const nav = document.getElementById("nav-menu");
-    menuBtn.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
+    menuBtn.addEventListener("click", () => nav.classList.toggle("active"));
     document.addEventListener("click", (e) => {
-        if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
+        if (!nav.contains(e.target) && !menuBtn.contains(e.target))
             nav.classList.remove("active");
-        }
     });
-    </script>
-    
+
+    // ── Custom cursor: dot snaps, ring follows ──
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top  = my + 'px';
+    });
+    function followRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + 'px';
+        ring.style.top  = ry + 'px';
+        requestAnimationFrame(followRing);
+    }
+    followRing();
+
+    // ── Animate level bars when visible ──
+    const fills = document.querySelectorAll('.level-fill');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                fills.forEach(f => f.style.width = f.dataset.width);
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+    observer.observe(document.getElementById('levelCard'));
+</script>
+
 </body>
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Anirban's Portfolio website</title>
+    <link rel="stylesheet" href="skills.css"
+</head>
+<body>
+    <header>
+        <label class="logo">Skills</label>
+    <!-- Menu icon -->
+    <div class="menu-btn">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+        <nav id="nav-menu">
+            <a href="index.html" class="Home">Home</a>
+            <a href="skills.html">Skills</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About_Me</a>
+        </nav>
+    </header>
+
+    <section class="skill-section">
+
+    <h1 class="skill-title">My Skills</h1>
+
+    <div class="skill-container">
+
+        <!-- Education -->
+        <div class="skill-box">
+            <h2><i class="fa-solid fa-code"></i> Technical Skills</h2>
+            <ul>
+                <li>Programming: C, C++, Python, Java</li>
+                <li>Web: HTML, CSS, JAVASCRIPT</li>
+                <li>Database: MySQL</li>
+            </ul>
+        </div>
+        <div class="skill-box">
+            <h2><i class="fa-solid fa-user-secret"></i>Cybersecurity Skills</h2>
+            <ul>
+                <li>Networking Fundamentals</li>
+                <li>Linux command line</li>
+                <li>wireshark</li>
+                <li>John the Ripper</li>
+                <li>HashCat</li>
+            </ul>
+        </div>
+
+        <div class="skill-box">
+            <h2><i class="fas fa-tools"></i> Tools & Platforms</h2>
+            <ul>
+                <li>Git & Github</li>
+                <li>Kali Linux</li>
+                <li>Virtual Box</li>
+            </ul>
+        </div>
+
+        <div class="skill-box">
+            <h2><i class="fa-solid fa-chart-line"></i> Level</h2>
+            <ul>
+                <li>Python - Intermediate</li>
+                <li>Linux - Intermediate</li>
+                <li>Web Development - Beginner</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+<!-- only javascript logic using AI -->
+    <script>
+    const menuBtn = document.querySelector(".menu-btn");
+    const nav = document.getElementById("nav-menu");
+    menuBtn.addEventListener("click", () => {
+        nav.classList.toggle("active");
+    });
+    document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
+            nav.classList.remove("active");
+        }
+    });
+    </script>
+    
+</body>
+</html>

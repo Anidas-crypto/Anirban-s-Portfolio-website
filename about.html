@@ -4,90 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Anirban's Portfolio website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>About Me — Anirban's Portfolio Website</title>
     <link rel="icon" type="image/png" href="Images/logo.png">
     <link rel="stylesheet" href="about.css">
 </head>
 <body>
-    <header>
-        <label class="logo">About_me</label>
 
-    <!-- Menu icon -->
-    <div class="menu-btn">
-        <i class="fa-solid fa-bars"></i>
-    </div>
-        <nav id="nav-menu">
-            <a href="index.html" class="Home">Home</a>
-            <a href="skills.html">Sklls</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About_Me</a>
-        </nav>
-    </header>
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
+<header>
+    <a href="index.html" class="logo">Anirban.</a>
+    <div class="menu-btn"><i class="fa-solid fa-bars"></i></div>
+    <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html" class="active-link">About Me</a>
+    </nav>
+</header>
 
+<section class="about-section">
 
-    <section class="about-section">
+    <h1 class="about-title">About <span>Me</span></h1>
 
-    <h1 class="about-title">About Me</h1>
-
-    <div class="about-container">
+    <div class="about-grid">
 
         <!-- Education -->
-        <div class="about-box">
-            <h2>🎓 Education</h2>
-            <ul>
-                <li>Madhyamik - Janai Traning High School (2021)</li>
-                <li>Higher Secondary - Janai Traning High School (2023)</li>
-                <li>BCA - The Calcutta Anglo Gujarati College </li>
+        <div class="about-card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="card-title">Education</div>
+            </div>
+            <ul class="about-list">
+                <li>Madhyamik — Janai Training High School (2021)</li>
+                <li>Higher Secondary — Janai Training High School (2023)</li>
+                <li>BCA — The Calcutta Anglo Gujarati College (Ongoing)</li>
             </ul>
         </div>
 
         <!-- Work Experience -->
-        <div class="about-box">
-            <h2>💼 Work Experience</h2>
-            <p> i currently doesn't have any work experience. but i actively find some jobs. </p>
+        <div class="about-card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <div class="card-title">Work Experience</div>
+            </div>
+            <p>
+                I don't have formal work experience yet, but I'm actively building projects and looking for opportunities. Currently focused on developing Catura AI and growing my skills every day.
+            </p>
         </div>
 
-        <!-- Personal Interest -->
-        <div class="about-box">
-            <h2>🚀 Personal Interests</h2>
-            <ul>
+        <!-- Personal Interests -->
+        <div class="about-card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
+                <div class="card-title">Personal Interests</div>
+            </div>
+            <ul class="about-list">
                 <li>Learning New Programming Languages</li>
-                <li>Cybersecurity & Ethical Hacking</li>
-                <li>Exploring New OS & Technologies</li>
-                <li>Gaming & Game Designing</li>
-                <li>News Paper/Online News Reading</li>
+                <li>Cybersecurity &amp; Ethical Hacking</li>
+                <li>Exploring New OS &amp; Technologies</li>
+                <li>Gaming &amp; Game Designing</li>
+                <li>News &amp; Current Affairs</li>
             </ul>
         </div>
 
     </div>
 
-    <!-- Contact Form -->
-    <div class="contact-form">
-        <h2>Contact Me</h2>
-        <form action="contact.php" method="POST">
+    <!-- Contact -->
+    <div class="contact-section">
+        <h2 class="contact-title">Contact <span>Me</span></h2>
+
+        <form class="contact-form" action="contact.php" method="POST">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
-            <button type="submit">Submit</button>
+            <button type="submit" class="submit-btn">Send Message</button>
         </form>
     </div>
 
 </section>
 
-    <!-- only javascript logic using AI -->
-    <script>
+<script>
+    // ── Nav toggle ──
     const menuBtn = document.querySelector(".menu-btn");
     const nav = document.getElementById("nav-menu");
-    menuBtn.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
+    menuBtn.addEventListener("click", () => nav.classList.toggle("active"));
     document.addEventListener("click", (e) => {
-        if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
+        if (!nav.contains(e.target) && !menuBtn.contains(e.target))
             nav.classList.remove("active");
-        }
     });
-    </script>
 
+    // ── Custom cursor: dot snaps, ring follows ──
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top  = my + 'px';
+    });
+    function followRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + 'px';
+        ring.style.top  = ry + 'px';
+        requestAnimationFrame(followRing);
+    }
+    followRing();
+</script>
 
 </body>
 </html>
