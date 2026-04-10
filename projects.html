@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="projects.css">
 </head>
 <body>
+
+    <div class="cursor"></div>
+    <div class="cursor-ring"></div>
     
     <header>
         <label class="logo">Projects</label>
@@ -36,7 +39,6 @@
             </div>
             <div class="project-box">
                 <h2>Catura AI by Anirban (Alpha Phase)</h2>
-                <h2>Drache AI by Anirban</h2>
                 <ul>
                     <li><a href="https://my-ai-assistant-9bbd.onrender.com" class="project-btn">Click to View</a></li>
                 </ul>
@@ -56,6 +58,37 @@
             nav.classList.remove("active");
         }
     });
+    </script>
+
+    <script>
+    const cursor = document.querySelector('.cursor');
+    const ring = document.querySelector('.cursor-ring');
+
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    // Track mouse
+    document.addEventListener('mousemove', e => {   
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // Dot follows instantly
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+});
+
+    // Smooth ring animation
+    function animateRing() {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+
+        ring.style.left = ringX + 'px';
+        ring.style.top = ringY + 'px';
+
+        requestAnimationFrame(animateRing);
+    }
+
+    animateRing();
     </script>
     
 </body>

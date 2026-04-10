@@ -4,63 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Anirban's Portfolio website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Anirban's Portfolio</title>
     <link rel="icon" type="image/png" href="Images/logo.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
 <header>
     <a href="index.html" class="logo">Anirban.</a>
-
-
-    <!-- Menu icon -->
-    <div class="menu-btn">
-        <i class="fa-solid fa-bars"></i>
-    </div>
+    <div class="menu-btn"><i class="fa-solid fa-bars"></i></div>
     <nav id="nav-menu">
-        <a href="index.html" class="Home">Home</a>
-        <a href="skills.html">Sklls</a>
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
         <a href="projects.html">Projects</a>
-        <a href="about.html">About_Me</a>
+        <a href="about.html">About Me</a>
     </nav>
 </header>
-<section class="home">
-    <div class="home-img">
-        <img src="Images/image.png" alt="">
-    </div>
-    <div class="home-content">
-        <h1> Hi,it's <span>Anirban Das</span></h1>
-        <h3 class="typing-text">I'm a <span class="typing"></span></h3>
-        <p class="para"><i><b>i'm currently studing in BCA under MAKAUT. And my college is The Calcutta Anglo Gujarati College</i></b></p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/Anirbandas1038"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://github.com/Anidas-crypto"><i class="fa-brands fa-github"></i></a>
-            <a href="https://x.com/Anirban83642331"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/anirban05"><i class="fa-brands fa-square-linkedin"></i></a>
-            <a href="mailto:work.anirbandas@zohomail.in"><i class="fa-solid fa-envelope"></i></a>
 
+<section class="home">
+    <!-- Left: content -->
+    <div class="home-content">
+        <p class="eyebrow">Portfolio — 2026</p>
+
+        <h1>Hi, I'm<span>Anirban Das</span></h1>
+
+        <div class="typing-row">
+            <span class="prefix">→</span>
+            <div class="typing-text"><span class="typing"></span></div>
         </div>
+
+        <p class="para">BCA student at The Calcutta Anglo Gujarati College under MAKAUT — building at the intersection of security, software & design.</p>
+
+        <div class="cta-group">
+            <a href="projects.html" class="btn-primary">View Projects</a>
+            <a href="about.html" class="btn-outline">About Me</a>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/Anirbandas1038" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://github.com/Anidas-crypto" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://x.com/Anirban83642331" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/anirban05" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="/cdn-cgi/l/email-protection#96e1f9e4fdb8f7f8ffe4f4f7f8f2f7e5d6ecf9fef9fbf7fffab8fff8" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+    </div>
+
+    <!-- Right: image -->
+    <div class="home-img">
+        <div class="img-glow"></div>
+        <div class="orbit"></div>
+        <div class="img-frame">
+            <div class="corner-tl"></div>
+            <div class="corner-br"></div>
+            <img src="Images/image.png" alt="Anirban Das">
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="num">3+</div>
+            <div class="label">Years Coding</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <div class="num">2+</div>
+            <div class="label">Projects</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <div class="num">5+</div>
+            <div class="label">Technologies</div>
+        </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint">
+        <span class="scroll-line"></span>
+        Scroll
     </div>
 </section>
 
-    <!-- only javascript logic using AI -->
-    <script>
-    const menuBtn = document.querySelector(".menu-btn");
-    const nav = document.getElementById("nav-menu");
-    menuBtn.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
-    document.addEventListener("click", (e) => {
-        if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
-            nav.classList.remove("active");
-        }
-    });
-    </script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="logic.js"></script>
 
 </body>
-<!--
-<footer>
-    <p>© 2026 All Rights Reserved By <span>Anirban</span></p>
-</footer>
--->
 </html>
