@@ -525,6 +525,9 @@
                 color: var(--white);
             }
             nav a:last-child { margin-bottom: 0; }
+            body { cursor: auto; } /* doing chnage here */
+    		.cursor, .cursor-ring { display: none; } /* doing chnage here */
+    		.menu-btn { cursor: pointer; } /* doing chnage here */
         }
 
         /* ── Responsive hero ── */
