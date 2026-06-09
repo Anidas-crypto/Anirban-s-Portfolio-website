@@ -7,25 +7,34 @@ document.addEventListener("click", (e) => {
         nav.classList.remove("active");
 });
 
-// ── Custom cursor: dot snaps to mouse, ring follows with lag ──
+// ── Custom cursor ──
+// Using CSS transform instead of top/left so position updates
+// are handled entirely by the GPU compositor — zero layout cost.
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
+
+let mx = 0, my = 0;
+let rx = 0, ry = 0;
+let rafId = null;
 
 document.addEventListener('mousemove', e => {
     mx = e.clientX;
     my = e.clientY;
-    // Dot moves instantly
-    cursor.style.left = mx + 'px';
-    cursor.style.top  = my + 'px';
-});
+    // Dot moves instantly on the GPU
+    cursor.style.transform = `translate(calc(${mx}px - 50%), calc(${my}px - 50%))`;
+    // Kick off ring follow if not already running
+    if (!rafId) rafId = requestAnimationFrame(followRing);
+}, { passive: true });
 
-    // Ring follows with smooth lag via rAF
 function followRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(followRing);
+    ring.style.transform = `translate(calc(${rx}px - 50%), calc(${ry}px - 50%))`;
+
+    // Stop the loop when ring has caught up (saves idle CPU)
+    if (Math.abs(mx - rx) > 0.5 || Math.abs(my - ry) > 0.5) {
+        rafId = requestAnimationFrame(followRing);
+    } else {
+        rafId = null;
+    }
 }
-followRing();
