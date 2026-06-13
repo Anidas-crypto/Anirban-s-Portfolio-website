@@ -1,3 +1,39 @@
+// ── Splash screen ──
+(function () {
+    const splash = document.getElementById('splash');
+    const bar    = document.getElementById('splashBar');
+    if (!splash || !bar) return;
+
+    // Prevent body scroll while splash is active
+    document.body.style.overflow = 'hidden';
+
+    // Animate progress bar from 0 → 100 over ~2 000 ms
+    const DURATION = 2000;
+    const INTERVAL = 30;
+    let elapsed = 0;
+
+    const ticker = setInterval(() => {
+        elapsed += INTERVAL;
+        const pct = Math.min((elapsed / DURATION) * 100, 100);
+        bar.style.width = pct + '%';
+
+        if (elapsed >= DURATION) {
+            clearInterval(ticker);
+
+            // Small pause at 100 % before sliding away
+            setTimeout(() => {
+                splash.classList.add('hide');
+                document.body.style.overflow = '';
+
+                // Remove from DOM after transition ends (0.8 s)
+                splash.addEventListener('transitionend', () => {
+                    splash.remove();
+                }, { once: true });
+            }, 200);
+        }
+    }, INTERVAL);
+})();
+
 // ── Nav toggle ──
 const menuBtn = document.querySelector(".menu-btn");
 const nav = document.getElementById("nav-menu");

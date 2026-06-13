@@ -569,3 +569,137 @@ section.home {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ── Splash / Welcome Screen ── */
+.splash {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Exit: slide up + fade */
+    transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.8s ease;
+}
+.splash.hide {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+/* Gold grid overlay (matches site bg) */
+.splash::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(212,175,55,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,175,55,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+
+.splash-inner {
+    text-align: center;
+    position: relative;
+    padding: 6rem 4rem;
+}
+
+/* Decorative horizontal lines */
+.splash-line {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity: 0;
+    animation: splashLineIn 0.6s 0.2s ease forwards;
+}
+.splash-line-top  { top: 0; }
+.splash-line-bottom { bottom: 0; }
+
+.splash-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0;
+    animation: splashFadeUp 0.6s 0.3s ease forwards;
+    margin-bottom: 1.5rem;
+}
+
+.splash-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(7rem, 16vw, 14rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--white);
+    opacity: 0;
+    animation: splashFadeUp 0.7s 0.45s ease forwards;
+    /* Gold letter-fill shimmer */
+    background: linear-gradient(90deg, var(--white) 40%, var(--gold) 55%, var(--white) 70%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: splashFadeUp 0.7s 0.45s ease forwards,
+               splashShimmer 2.5s 0.8s linear infinite;
+}
+
+.splash-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.4rem;
+    color: var(--muted);
+    margin-top: 1.8rem;
+    letter-spacing: 0.06em;
+    opacity: 0;
+    animation: splashFadeUp 0.6s 0.7s ease forwards;
+}
+
+/* Animated ellipsis dots */
+.splash-dots::after {
+    content: '';
+    animation: splashEllipsis 1.2s 1s steps(4, end) infinite;
+}
+@keyframes splashEllipsis {
+    0%   { content: ''; }
+    25%  { content: '.'; }
+    50%  { content: '..'; }
+    75%  { content: '...'; }
+    100% { content: ''; }
+}
+
+/* Progress bar */
+.splash-bar-wrap {
+    width: 200px;
+    height: 1px;
+    background: rgba(212,175,55,0.2);
+    margin: 3.5rem auto 0;
+    border-radius: 2px;
+    overflow: hidden;
+    opacity: 0;
+    animation: splashFadeUp 0.5s 0.9s ease forwards;
+}
+.splash-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: width 0.05s linear;
+}
+
+/* Keyframes */
+@keyframes splashFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes splashLineIn {
+    from { opacity: 0; transform: scaleX(0); }
+    to   { opacity: 1; transform: scaleX(1); }
+}
+@keyframes splashShimmer {
+    from { background-position: 200% center; }
+    to   { background-position: -200% center; }
+}
